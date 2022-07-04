@@ -1,0 +1,34 @@
+{
+  "name": "server-alejandria",
+  "version": "1.0.0",
+  "description": "Conexiones http con el app movil ",
+  "main": "index.js",
+  "scripts": {
+    "test": "cors,HTTP",
+    "start": "nodemon index.js --exec babel-node",
+    "dev": "nodemon index.js --exec babel-node"
+  },
+  "keywords": [
+    "Nodemon",
+    "Express",
+    "Mongoose",
+    "Cors",
+    "Express-Promise-Router",
+    "Morgan",
+    "Babel/cli"
+  ],
+  "author": "Alejandro Manuel y Gary",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.18.6",
+    "@babel/core": "^7.18.6",
+    "@babel/node": "^7.18.6",
+    "@babel/preset-env": "^7.18.6"
+  }
+}
