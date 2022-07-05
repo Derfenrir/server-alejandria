@@ -4,6 +4,8 @@ import morgan from 'morgan';
 import path from 'path'
 import mongoose from 'mongoose';
 
+import router from './routers'
+
 
 
 mongoose.Promise=global.Promise;
@@ -21,6 +23,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,'public')));
+
+app.use('/api', router);
 
 
 app.listen(app.get('port'), ()=>{
