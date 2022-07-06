@@ -4,7 +4,7 @@ import morgan from 'morgan';
 import path from 'path'
 import mongoose from 'mongoose';
 
-import router from './routers'
+import router from './routes'
 
 
 
