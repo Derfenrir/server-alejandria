@@ -2,17 +2,17 @@ import { model } from "mongoose";
 import models from "../models";
 
 export default {
-  addPersona: async (req, res, next) => {
+  addLibro: async (req, res, next) => {
     try {
-      const { nombre, email, contraseña } = req.body;
+      const { nombre, id, autor } = req.body;
 
-      const persona = new models.Personas({
+      const libro = new models.Biblioteca({
         nombre,
-        email,
-        contraseña,
+        id,
+        autor,
       });
 
-      const guardar = await persona.save();
+      const guardar = await libro.save();
       res.status(200).json(guardar);
     } catch (e) {
       res.status(500).send({
@@ -22,9 +22,9 @@ export default {
     }
   },
   //Método para consultar en la coleccion de datos de mongoDB
-  listarPersonas: async (req, res, next) => {
+  listarLibros: async (req, res, next) => {
     try {
-      const listar = await models.Personas.find();
+      const listar = await models.Biblioteca.find();
       res.json(listar);
     } catch (e) {
       res.status(500).send({
@@ -34,9 +34,9 @@ export default {
     }
   },
 
-  eliminarPersona: async (req, res, next) => {
+  eliminarLibro: async (req, res, next) => {
     try {
-      const eliminar = await models.Personas.findByIdAndDelete(req.params.id);
+      const eliminar = await models.Biblioteca.findByIdAndDelete(req.params.id);
       res.status(200).json(eliminar);
     } catch (e) {
       res.status(500).send({
@@ -46,9 +46,9 @@ export default {
     }
   },
   //Método para buscar un registro por el ID de la colección
-  listarOnePersona: async (req, res, next) => {
+  listarOneLibro: async (req, res, next) => {
     try {
-        const listarOne=await models.Personas.findById(req.params.id);
+        const listarOne=await models.Biblioteca.findById(req.params.id);
         if(!listarOne){
             res.status(400).send({
                 message: 'El registro no se ha encontrado'
@@ -64,21 +64,21 @@ export default {
     }
   },
 
-  updatePersona:async(req,res,next)=>{
+  updateLibro:async(req,res,next)=>{
     try{
         const {
             nombre,
-            email,
-            contraseña
+            id,
+            autor,
         }=req.body;
 
-        const upPersona={
+        const upLibro={
             nombre,
-            email,
-            contraseña
+            id,
+            autor,
         };
 
-        const update=await models.Personas.findByIdAndUpdate(req.params.id,upPersona);
+        const update=await models.Biblioteca.findByIdAndUpdate(req.params.id,upLibro);
         res.status(200).json(update);
 
     }catch(e){
