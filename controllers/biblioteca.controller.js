@@ -4,9 +4,10 @@ import models from "../models";
 export default {
   addLibro: async (req, res, next) => {
     try {
-      const { nombre, id, autor } = req.body;
+      const { img, nombre, id, autor } = req.body;
 
       const libro = new models.Biblioteca({
+        img,
         nombre,
         id,
         autor,
@@ -67,12 +68,14 @@ export default {
   updateLibro:async(req,res,next)=>{
     try{
         const {
+            img,
             nombre,
             id,
             autor,
         }=req.body;
 
         const upLibro={
+            img,
             nombre,
             id,
             autor,
