@@ -4,15 +4,14 @@ import models from "../models";
 export default {
   addLibro: async (req, res, next) => {
     try {
-      const { img, nombre, autor } = req.body;
+      const { libro, sinopsis } = req.body;
 
-      const libro = new models.Biblioteca({
-        img,
-        nombre,
-        autor,
+      const libros = new models.Ubicacion({
+        libro,
+        sinopsis,
       });
 
-      const guardar = await libro.save();
+      const guardar = await libros.save();
       res.status(200).json(guardar);
     } catch (e) {
       res.status(500).send({
@@ -24,7 +23,7 @@ export default {
   //Método para consultar en la coleccion de datos de mongoDB
   listarLibros: async (req, res, next) => {
     try {
-      const listar = await models.Biblioteca.find();
+      const listar = await models.Ubicacion.find();
       res.json(listar);
     } catch (e) {
       res.status(500).send({
@@ -36,7 +35,7 @@ export default {
 
   eliminarLibro: async (req, res, next) => {
     try {
-      const eliminar = await models.Biblioteca.findByIdAndDelete(req.params.id);
+      const eliminar = await models.Ubicacion.findByIdAndDelete(req.params.id);
       res.status(200).json(eliminar);
     } catch (e) {
       res.status(500).send({
@@ -48,7 +47,7 @@ export default {
   //Método para buscar un registro por el ID de la colección
   listarOneLibro: async (req, res, next) => {
     try {
-        const listarOne=await models.Biblioteca.findById(req.params.id);
+        const listarOne=await models.Ubicacion.findById(req.params.id);
         if(!listarOne){
             res.status(400).send({
                 message: 'El registro no se ha encontrado'
@@ -67,18 +66,14 @@ export default {
   updateLibro:async(req,res,next)=>{
     try{
         const {
-            img,
-            nombre,
-            autor,
+          libro,
         }=req.body;
 
         const upLibro={
-            img,
-            nombre,
-            autor,
+          libro,
         };
 
-        const update=await models.Biblioteca.findByIdAndUpdate(req.params.id,upLibro);
+        const update=await models.Ubicacion.findByIdAndUpdate(req.params.id,upLibro);
         res.status(200).json(update);
 
     }catch(e){

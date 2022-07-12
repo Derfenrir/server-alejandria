@@ -3,7 +3,6 @@ import mongoose, {Schema} from "mongoose";
 const libros=new Schema({
     img:String,
     nombre:String,
-    id:String,
     autor:String,
     createdAct:{type:Date, default:Date.now}
 })
