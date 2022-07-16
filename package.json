@@ -4,7 +4,7 @@
   "description": "Conexiones http con el app movil ",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node index.js",
+    "start": "node index.js",
     "dev": "nodemon index.js --exec babel-node"
   },
   "engines": {
