@@ -7,9 +7,7 @@
     "start": "babel-node index.js",
     "dev": "nodemon index.js --exec babel-node"
   },
-  "engines": {
-    "node": "16.15.1"
-  },
+  
   "keywords": [
     "Nodemon",
     "Express",
