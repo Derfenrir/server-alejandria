@@ -23,7 +23,7 @@ export default {
   //Método para consultar en la coleccion de datos de mongoDB
   listarLibros: async (req, res, next) => {
     try {
-      const listar = await models.Ubicacion.find();
+      const listar = await models.Ubicacion.find({libro:req.params.id}).populate({path:'libro'});
       res.json(listar);
     } catch (e) {
       res.status(500).send({
@@ -47,7 +47,7 @@ export default {
   //Método para buscar un registro por el ID de la colección
   listarOneLibro: async (req, res, next) => {
     try {
-        const listarOne=await models.Ubicacion.findById(req.params.id);
+        const listarOne=await models.Ubicacion.findById(req.params.id).populate({path:'libro'});
         if(!listarOne){
             res.status(400).send({
                 message: 'El registro no se ha encontrado'
