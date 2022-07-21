@@ -1,9 +1,8 @@
 import mongoose, {Schema} from "mongoose";
 
 const libros=new Schema({
-    img:String,
-    nombre:String,
-    autor:String,
+    sinopsis: String,
+    capitulos: String,
     createdAct:{type:Date, default:Date.now}
 })
 

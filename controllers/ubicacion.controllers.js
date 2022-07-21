@@ -4,11 +4,14 @@ import models from "../models";
 export default {
   addLibro: async (req, res, next) => {
     try {
-      const { libro, sinopsis } = req.body;
+      const { libro, img, nombre, autor, descripcion } = req.body;
 
       const libros = new models.Ubicacion({
         libro,
-        sinopsis,
+        img,
+        nombre,
+        autor,
+        descripcion
       });
 
       const guardar = await libros.save();
@@ -67,10 +70,18 @@ export default {
     try{
         const {
           libro,
+          img,
+          nombre,
+          autor,
+          descripcion
         }=req.body;
 
         const upLibro={
           libro,
+        img,
+        nombre,
+        autor,
+        descripcion
         };
 
         const update=await models.Ubicacion.findByIdAndUpdate(req.params.id,upLibro);

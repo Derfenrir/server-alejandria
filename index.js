@@ -3,6 +3,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import path from 'path'
 import mongoose from 'mongoose';
+import {v4 as uuid} from 'uuid';
 
 import router from './routes'
 
@@ -24,6 +25,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,'public')));
+
+
 
 app.use('/api', router);
 

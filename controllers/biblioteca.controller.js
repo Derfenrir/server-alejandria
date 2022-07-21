@@ -4,12 +4,11 @@ import models from "../models";
 export default {
   addLibro: async (req, res, next) => {
     try {
-      const { img, nombre, autor } = req.body;
+      const { sinopsis, capitulos, } = req.body;
 
       const libro = new models.Biblioteca({
-        img,
-        nombre,
-        autor,
+       sinopsis,
+       capitulos,
       });
 
       const guardar = await libro.save();
@@ -67,15 +66,13 @@ export default {
   updateLibro:async(req,res,next)=>{
     try{
         const {
-            img,
-            nombre,
-            autor,
+          sinopsis,
+          capitulos,
         }=req.body;
 
         const upLibro={
-            img,
-            nombre,
-            autor,
+          sinopsis,
+          capitulos,
         };
 
         const update=await models.Biblioteca.findByIdAndUpdate(req.params.id,upLibro);
